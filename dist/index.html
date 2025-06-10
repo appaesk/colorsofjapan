@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colors of Japan</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:200,400,800">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script type="module" crossorigin src="/assets/index-BI_vC1DP.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Y7MJkuJ3.css">
+</head>
+<body>
+  <div class="wrapper">
+  <script>
+    document.body.style.setProperty('--H', 200);
+    document.body.style.setProperty('--S', `${80}%`);
+    document.body.style.setProperty('--L', `${88}%`);
+    document.addEventListener("DOMContentLoaded", () => {
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        const hue = 200 + (scrollY / maxScroll) * 200; // hue from 200 to 300
+        document.body.style.setProperty('--HBase', hue);
+      });
+    });
+  </script>
+  <section class="header">
+    <div class="title">The Colors of Japan</div>
+    <div class="subtitle">Visualizing seasonal weather and scenery of Japan</div>
+    <div class="credit">By <a class="link" href="https://appaeco.wordpress.com/">appaeco</a> (2025)</div>
+    <div class="scroll-icon">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+  <section id="scrolly">
+    <div class="sticky-thing">
+        <div id="mountain-location"></div>
+        <!-- <div class="mountain" style="opacity: 0.1;">
+            <div class="snow-cap"></div>
+            <h1 id="sticky-text"></h1>
+        </div> -->
+        <div id="sun"></div>
+    </div>
+    <script>
+      class MyStep extends HTMLElement {
+        connectedCallback() {
+          this.innerHTML = `
+          <div class="step">
+            <div class="step-text">
+              ${this.getAttribute('text')}
+            </div>
+            <div class="step-detail">
+              <h1 class="detail-title">${this.getAttribute('detail')}</h1>
+              <p class="detail-text">${this.getAttribute('description')}</p>
+              <div class="feature">
+                <div class="flowers">
+                  ${
+                  (this.getAttribute('flowers') || '')
+                    .split(',')
+                    .map(flower => {
+                    // const [text, link] = flower.split('|');
+                    // return `<div class="flower"><a href="${link ? link.trim() : '#'}">${text.trim()}</a></div>`;
+                    return `<div class="flower">${flower.trim()}</div>`;
+                    })
+                    .join('')
+                  }
+                </div>
+              </div>
+              <div class="external-source">
+                ${
+                  (this.getAttribute('sources') || '')
+                    .split(',')
+                    .map(source => {
+                    const [text, link, icon] = source.split('|');
+                    return`
+                      <a class="external-source-button" href="${link.trim()}" target="_blank" rel="noopener">
+                        <i class="fa fa-${icon.trim()}"></i> ${text.trim()}
+                      </a>`;})
+                    .join('')
+                }
+              </div>
+            </div>
+          </div>`;
+        }
+      }
+      customElements.define('my-step', MyStep);
+    </script>
+    
+    <div class="steps">
+      <my-step 
+        text="January" 
+        detail="The Month of Snowy Silver" 
+        description="Snow blankets northern Japan, especially Hokkaido, reflecting the silver-white purity of New Year's celebrations. A serene start to the year."
+        flowers="Camellias"
+        sources="Event guide|https://japancheapo.com/events/january|calendar-days,Snow guide|https://www.snowjapan.com/|snowflake">
+      </my-step>
+      <my-step 
+        text="February" 
+        detail="The Month of Plum Purple" 
+        description="Late February welcomes the bloom of plum blossoms (ume), their purplish-pink hue gently signaling the end of winter’s chill."
+        flowers="Plum,Kawazu Sakura,Camellias"
+        sources="Event guide|https://japancheapo.com/events/february|calendar-days">
+      </my-step>
+      <my-step 
+        text="March" 
+        detail="The Month of Growing Green" 
+        description="March marks the awakening of spring. Fresh greenery begins to emerge, and Kawazu Sakura—vibrant early-blooming cherry blossoms—add soft pink accents to the landscape."
+        flowers="Plum,Kawazu Sakura"
+        sources="Event guide|https://japancheapo.com/events/march|calendar-days">
+      </my-step>
+      <my-step 
+        text="April" 
+        detail="The Month of Sakura Softpink" 
+        description="Cherry blossoms reach full bloom across Japan. Parks are painted in gentle pink, and hanami (flower viewing) marks spring in motion."
+        flowers="Sakura,Nemophila,Wisteria"
+        sources="Event guide|https://japancheapo.com/events/april|calendar-days,Sakura guide|https://hanami.walkerplus.com/|fan">
+      </my-step>
+      <my-step 
+        text="May" 
+        detail="The Month of Bright Blue" 
+        description="May skies shine bright, while green tea fields and young leaves cover the land. The vibrant blue reflects the spirit of youth echoed in Children's Day festivities."
+        flowers="Nemophila,Wisteria"
+        sources="Event guide|https://japancheapo.com/events/may|calendar-days">
+      </my-step>
+      <my-step 
+        text="June" 
+        detail="The Month of Glory Grey" 
+        description="With the rainy season comes hydrangeas (ajisai) in blue and purple hues, especially seen in temples like Hakusan-jinja Shrine, the Main Site of the Bunkyo Hydrangea Festival and Meigetsuin in Kamakura."
+        flowers="Hydrangea"
+        sources="Event guide|https://japancheapo.com/events/june|calendar-days,Firework guide|https://hanabi.walkerplus.com/|star-of-life">
+      </my-step>
+      <my-step 
+        text="July" 
+        detail="The Month of Vivid Violet" 
+        description="Summer festivals (matsuri) light up the streets with fireworks and lanterns, igniting the night sky. Deep reds and vivid purples paint the summer, especially around Sea Day (Umi no Hi)."
+        flowers="Hydrangea,Sunflowers"
+        sources="Event guide|https://japancheapo.com/events/july|calendar-days,Firework guide|https://hanabi.walkerplus.com/|star-of-life">
+      </my-step>
+      <my-step 
+        text="August" 
+        detail="The Month of Young Yellow" 
+        description="Sunflowers shine under the blazing sun. Mountain Day (Yama no Hi) and Obon traditions highlight a season of family and remembrance."
+        flowers="Sunflowers"
+        sources="Event guide|https://japancheapo.com/events/august|calendar-days,Fuji climbing guide|https://www.fujisan-climb.jp/en/index.html|mountain,Firework guide|https://hanabi.walkerplus.com/|star-of-life">
+      </my-step>
+      <my-step 
+        text="September" 
+        detail="The Month of Radiant Red" 
+        description="Golden rice fields ripple in the breeze as harvest season nears. Cosmos and chrysanthemums mirror the deepening late-summer warmth."
+        flowers="Cosmos,Chrysanthemum"
+        sources="Event guide|https://japancheapo.com/events/september|calendar-days">
+      </my-step>
+      <my-step 
+        text="October" 
+        detail="The Month of Oak Orange" 
+        description="Autumn begins with vibrant leaves turning orange and red. Autumn leaves (Kōyō) season unfolds in places like Kyoto and Nikko with fiery displays."
+        flowers="Red kochia,Cosmos"
+        sources="Event guide|https://japancheapo.com/events/october|calendar-days"></my-step>
+      </my-step>
+      <my-step 
+        text="November" 
+        detail="The Month of Bark Brown" 
+        description="Temples and shrines bask in deep autumn colors of maple, especially in Kyoto's Arashiyama. As the month progresses, trees begin to shed their leaves. Earthy browns and reds evoke a season of reflection."
+        flowers="Red maple"
+        sources="Event guide|https://japancheapo.com/events/november|calendar-days,Autumn leaves guide|https://koyo.walkerplus.com/|leaf">
+      </my-step>
+      <my-step 
+        text="December" 
+        detail="The Month of Winter White" 
+        description="Winter illuminations light up cities with purples and icy tones. Golden gingko leaves linger into early December, contrasting beautifully with the cool glow of festive lights as the year winds down."
+        flowers="Yellow gingko,Red maple"
+        sources="Event guide|https://japancheapo.com/events/december|calendar-days,Illumination guide|https://illumi.walkerplus.com/|lightbulb">
+      </my-step>
+      <div><div class="empty"></div></div>
+    </div>
+  </section>
+  <section class="footer">
+    <p class="subtitle">Powered by</p>
+    <div class="architecture">
+        <div class="arch">Node.js</div>
+        <div class="arch">Vite</div>
+        <div class="arch">Scrollama</div>
+        <div class="arch">Three.js</div>
+        <div class="arch">css.glass</div>
+        <div class="arch">Fontawesome</div>
+        <div class="arch">Google Fonts</div>
+        <div class="arch">ChatGPT</div>
+        <div class="arch">Copilot</div>
+        <div class="arch">Japan Meteorological Agency</div>
+    </div>
+    <div class="others">
+        <div class="oth">
+          <a href="https://appaeco.wordpress.com/" target="_blank" class="link-general">Behind the story</a>
+        </div>
+        <div class="oth">|</div>
+        <div class="oth">Share</div>
+        <div class="oth">
+          <div class="share-buttons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL" target="_blank" class="btn fb" aria-label="Share on Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=YOUR_URL&text=Colors of Japan" target="_blank" class="btn x" aria-label="Share on X">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_URL" target="_blank" class="btn li" aria-label="Share on LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+    </div>
+  </section>
+  </div>
+</body>
+</html>

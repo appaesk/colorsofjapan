@@ -1,6 +1,5 @@
 import scrollama from 'scrollama';
 import { updateSnowCap, moveCameraX, rotateY } from './mountain.js';
-import { rotate } from 'three/tsl';
 
 // initialize the scrollama
 const scroller = scrollama();
