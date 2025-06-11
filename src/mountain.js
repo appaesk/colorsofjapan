@@ -354,12 +354,50 @@ const snowGraph = createWeatherGraph(
 	"#1976d2"  // blue (snow)
 );
 
+function createTextLabel(text) {
+	const canvas = document.createElement('canvas');
+	const context = canvas.getContext('2d');
+	const fontSize = 64;
+
+	canvas.width = 512;
+	canvas.height = 128;
+
+	context.font = `${fontSize}px Inter`;
+	context.fillStyle = 'white';
+	context.textAlign = 'center';
+	context.textBaseline = 'middle';
+	context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+	const texture = new THREE.CanvasTexture(canvas);
+	texture.needsUpdate = true;
+
+	const material = new THREE.SpriteMaterial({ map: texture, transparent: true });
+	const sprite = new THREE.Sprite(material);
+
+	// Optional: Scale down
+	sprite.scale.set(0.8, 0.2, 1); // Adjust size based on your scene
+
+	return sprite;
+}
+const tempLabel = createTextLabel("Temperature");
+tempLabel.position.set(-0.6, 3, 2.5); // adjust as needed
+const cloudLabel = createTextLabel("Cloud Coverage");
+cloudLabel.position.set(-0.5, 3.6, 2); // adjust as needed
+const precipitationLabel = createTextLabel("Precipitation");
+precipitationLabel.position.set(-1, 2.5, 3); // adjust as needed
+const snowLabel = createTextLabel("Snow Level");
+snowLabel.position.set(-1, 1.8, 3.9); // adjust as needed
+
 const groupGraph = new THREE.Group();
 // Add multiple objects to the group
 groupGraph.add(tempGraph);
 groupGraph.add(cloudGraph);
 groupGraph.add(precipitationGraph);
 groupGraph.add(snowGraph);
+groupGraph.add(tempLabel);
+groupGraph.add(cloudLabel);
+groupGraph.add(precipitationLabel);
+groupGraph.add(snowLabel);
 groupGraph.rotation.y = 2 * Math.PI;
 scene.add(groupGraph);
 
