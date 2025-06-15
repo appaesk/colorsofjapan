@@ -410,6 +410,7 @@ controls.enableZoom = false;
 // controls.minDistance = 5;
 // controls.maxDistance = 8;
 controls.enablePan = false;
+controls.enableRotate = false;
 
 // Resize
 window.addEventListener('resize', () => {
